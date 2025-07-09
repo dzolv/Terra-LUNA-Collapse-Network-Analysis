@@ -4,7 +4,7 @@ This repository contains the full analysis for the "Network Analysis and Storyte
 
 The final report and analysis are presented in the `LUNA_Collapse_Network_Analysis.ipynb` Jupyter Notebook.
 
-**[View the full analysis notebook on GitHub](LUNA_Collapse_Network_Analysis.html)**
+**[View the full analysis notebook on GitHub](LUNA_Collapse_Network_Analysis.ipynb)**
 
 ---
 
