@@ -89,7 +89,7 @@ This step creates the final summary CSV with accurate USD volumes, which is the 
 python codes/fixTokensToUSD.py
 ```
 
-**Step D: Run the Final Analysis (Jupyter Notebook)**
+**Step C: Run the Final Analysis (Jupyter Notebook)**
 
 Now that all the necessary processed data (`master_transfers.parquet`, the daily graphs, and `daily_network_metrics_corrected.csv`) has been created, you can explore the final analysis. The purpose of using Jupyter is to better showcase other advanced analysis python code in the project and to combine it with image analysis and evaluation.
 
