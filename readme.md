@@ -61,7 +61,7 @@ The dataset used for this project is the **ERC20 Stablecoin and WLUNA Transactio
 
 ### Execution Workflow
 
-The analysis is split between standalone Python scripts (for heavy data processing) and the final Jupyter Notebook (for analysis and visualization). **The scripts in the `codes/` directory must be run first to generate the necessary data files for the notebook.**
+The analysis is split between standalone Python scripts (for heavy data processing) and the final Jupyter Notebook (for analysis and visualization). **The scripts in the `codes/` directory that mentioned below must be run first to generate the necessary data files for the notebook.**
 
 Please run the scripts from the project's root directory in the following order:
 
