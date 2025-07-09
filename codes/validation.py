@@ -59,8 +59,7 @@ def main():
     print("="*50)
     print(summary_table)
     print("="*50)
-    print("\nAs shown, no single file contains all required tokens (e.g., WLUNA).")
-    print("This confirms the necessity of combining the files for a complete analysis.")
+    print("\nTo briefly check if all the data are not damaged: All ture -> Go ahead!")
     
     summary_table.to_csv('report/data_validation_summary.csv')
     print("\nSummary table saved to 'report/data_validation_summary.csv'")
