@@ -4,7 +4,7 @@ This repository contains the full analysis for the "Network Analysis and Storyte
 
 The final report and analysis are presented in the `LUNA_Collapse_Network_Analysis.ipynb` Jupyter Notebook.
 
-**[View the full analysis notebook on GitHub](LUNA_Collapse_Network_Analysis.html)**
+**[View the full analysis notebook on GitHub](LUNA_Collapse_Network_Analysis.ipynb)**
 
 ---
 
@@ -59,13 +59,47 @@ The dataset used for this project is the **ERC20 Stablecoin and WLUNA Transactio
     - Download the dataset from the link above.
     - Unzip the contents and place the raw `.csv` files inside the `data/` folder. The folder should contain `token_transfers.csv`, `token_transfers_V2.0.0.csv`, `token_transfers_V3.0.0.csv`, `event_data.csv`, and the `price_data/` subfolder.
 
-3.  **Install the required Python libraries.**
+### Execution Workflow
 
-4.  **Launch Jupyter Notebook:**
+The analysis is split between standalone Python scripts (for heavy data processing) and the final Jupyter Notebook (for analysis and visualization). **The scripts in the `codes/` directory must be run first to generate the necessary data files for the notebook.**
+
+Please run the scripts from the project's root directory in the following order:
+
+**Step A: Initial Data Processing (Command Line)**
+
+These scripts will process tens of millions of transactions and build the daily network graphs. This is the most time-consuming part.
+
+```bash
+# 1. (Optional) Validate the raw data files
+python codes/validation.py
+
+# 2. Unify, clean, and price-correct the raw transaction data
+python codes/load.py
+
+# 3. Build the sequence of daily network graphs (This will take time)
+python codes/construct.py
+```
+
+**Step B: Generate Corrected Metrics (Command Line)**
+
+This step creates the final summary CSV with accurate USD volumes, which is the primary data source for the notebook's plots.
+
+```bash
+# 4. Recalculate daily volumes with full price correction
+python codes/fixTokensToUSD.py
+```
+
+**Step D: Run the Final Analysis (Jupyter Notebook)**
+
+Now that all the necessary processed data (`master_transfers.parquet`, the daily graphs, and `daily_network_metrics_corrected.csv`) has been created, you can explore the final analysis. The purpose of using Jupyter is to better showcase other advanced analysis python code in the project and to combine it with image analysis and evaluation.
+
+5.  **Launch Jupyter:**
     ```bash
-    jupyter lab LUNA_Collapse_Network_Analysis.ipynb
+    jupyter lab  # or jupyter notebook
     ```
-    You can now run the cells in the notebook to reproduce the analysis. Note that the initial data preprocessing scripts in the `codes/` directory can be run to generate the `master_transfers.parquet` file from the raw data.
+6.  **Open and Run:** Open [`LUNA_Collapse_Network_Analysis.ipynb`](./LUNA_Collapse_Network_Analysis.ipynb) and run the cells from top to bottom. The notebook is designed to load the pre-processed data and will run quickly.
+
+---
 
 ## Project Structure
 
@@ -117,3 +151,4 @@ This project was built using the following key libraries. For a full list, see `
 - `pyarrow==20.0.0`
 - `seaborn==0.13.2`
 - `tqdm==4.67.1`
+
